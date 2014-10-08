@@ -1,0 +1,125 @@
+.paginatorContainer {
+	min-width: 160px;
+	font-family: arial;
+	font-size: 11px;
+	height: 100%;
+}
+
+.paginatorContent {
+	width: 100%;
+	height: 100%;
+}
+
+.paginatorSwitch {
+	width: 100%;
+	background-color: transparent;
+	color: white;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+	position: relative;
+	bottom: 0px;
+}
+
+.paginatorLeftButtons {
+	float: left;
+}
+
+.paginatorRightButtons {
+	float: right;
+}
+
+.paginatorSwitchButton {
+	display: table-cell;
+	padding: 0px;
+	margin: 0px;
+}
+
+.paginatorSwitchButtonInput {
+	position: relative;
+	height: 20px;
+	min-width: 20px;
+	margin: 0px;
+	background-color: rgb(52, 152, 219);
+	box-sizing: border-box;
+	border: 0;
+	border-bottom: 2px solid rgb(41, 128, 185);
+	-webkit-box-shadow: inset 0 -1px rgb(41, 128, 185);
+	box-shadow: inset 0 -1px rgb(41, 128, 185);
+	cursor: pointer;
+	color: white;
+	font-size: 11px;
+		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.paginatorSwitchButtonInput:active {
+	outline: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.paginatorSwitchButtonInput:hover:enabled {
+	background-color: rgb(37,140,209);
+	color: white;
+}
+
+.paginatorSwitchButtonInput:disabled {
+	color: rgb(182,218,242);
+	background-color: rgb(74,163,223);
+	border-bottom: 2px solid rgb(52,152,219);
+	-webkit-box-shadow: inset 0 -2px rgb(52,152,219);
+	box-shadow: inset 0 -1px rgb(52,152,219);
+}
+
+.paginatorCenterButtons {
+	height: 20px;
+	background-color: rgb(52, 152, 219);
+	text-align: center;
+	outline: 0;
+	border-bottom: 2px solid rgb(41, 128, 185);
+	-webkit-box-shadow: inset 0 -1px rgb(41, 128, 185);
+	box-shadow: inset 0 -1px rgb(41, 128, 185);
+	box-sizing: border-box;
+}
+
+.paginatorCenterButtons span {
+	vertical-align: middle;
+    padding-top: 2px;
+}
+
+.paginatorTable tbody tr:nth-child(2n) {
+    background-color: rgba(232,244,248, 0.8);
+}
+
+.paginatorTable tbody tr:nth-child(2n + 1) {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.paginatorTable 
+{
+    width: 100%;
+    display: table;
+}
+
+.paginatorTable tr {
+    display: table-row;
+}
+
+.paginatorTable tbody tr td 
+{
+    display: table-cell;
+    height: 20px;
+    padding: 2px 4px;
+}
+
+.paginatorTable tbody tr td:last-child {
+    width: 100%;
+}
+
+.paginatorTableHeader {
+    font-weight: bold !important;
+    height: 20px;
+    color: #436976;
+}
+
+.paginatorTableHeaderCellSortable:hover {
+    color: black;
+}
