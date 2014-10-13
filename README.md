@@ -8,6 +8,8 @@ Simple implementation of a paginator. The paginator includes the following featu
  - Showing/hiding the header, navigation bar or specified columns
  - Hiding navigation bar if only a few items, filling table with empty lines etc.
 
+![Paginator](https://ninjadevs.files.wordpress.com/2014/10/paginator.png)
+
 ###Usage
 
 1. Create a new empty div-block with an id:
