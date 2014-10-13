@@ -12,6 +12,8 @@ Simple implementation of a paginator. The paginator includes the following featu
 
 ![Paginator](https://ninjadevs.files.wordpress.com/2014/10/paginator.png)
 
+[>> JSFiddle](http://jsfiddle.net/jy3ffyag/)
+
 ###Usage
 
 1. Create a new empty div-block with an id:
