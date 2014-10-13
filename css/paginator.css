@@ -1,13 +1,11 @@
 .paginatorContainer {
 	min-width: 160px;
 	font-family: arial;
-	font-size: 11px;
-	height: 100%;
+	font-size: 11px !important;
 }
 
 .paginatorContent {
 	width: 100%;
-	height: 100%;
 }
 
 .paginatorSwitch {
@@ -97,6 +95,7 @@
 {
     width: 100%;
     display: table;
+    font-size: 11px;
 }
 
 .paginatorTable tr {
