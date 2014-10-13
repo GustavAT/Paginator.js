@@ -5,8 +5,8 @@ Simple implementation of a paginator. The paginator includes the following featu
  - Scrolling through pages and jumping to the first/last page using the buttons in the navigation bar.
  - Sorting the content by clicking on the header of a column if it isn't disabled by the user.
  - Sorting the content using a specified type, i.e. string, number, date etc.
- - Showing/hiding the header, navigation bar and specified columns
- - Hiding navigation bar if only few items, filling table with empty lines etc.
+ - Showing/hiding the header, navigation bar or specified columns
+ - Hiding navigation bar if only a few items, filling table with empty lines etc.
 
 ###Usage
 
