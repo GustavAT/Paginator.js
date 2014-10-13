@@ -43,7 +43,7 @@ Paginator = (function () {
         options.hideSwitchBar = options.hideSwitchBar === false ? false : true;
         options.hideHeader = options.hideHeader === true ? true : false;
         options.maxRows = options.maxRows && options.maxRows > 0 ? options.maxRows : 7;
-        if (!options.types) options.types = [];
+        if (!options.types) options.types = -1;
 
         this.activeColumn = options.defaultColumn;
 
@@ -65,6 +65,7 @@ Paginator = (function () {
         this.createDOM();
         this.initButtons();
         this.initSwitchBar();
+        this.initTypes();
         this.initHandlers();
         this.initVisibleColumns();
         this.initSortableColumns();
@@ -99,7 +100,7 @@ Paginator = (function () {
         if (this.options.types === -1) {
             this.options.types = [];
             for (i = 0; i < this.header.length; i++) {
-                this.options.types = "string";
+                this.options.types.push("string");
             }
         }
     };
