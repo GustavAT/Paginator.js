@@ -1,7 +1,7 @@
 Paginator.js
 ============
 
-** Paginator.js is still in progress**
+**Paginator.js is still in progress**
 
 Simple implementation of a paginator. The paginator includes the following features:
  - Scrolling through pages and jumping to the first/last page using the buttons in the navigation bar.
