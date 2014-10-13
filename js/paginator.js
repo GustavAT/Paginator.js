@@ -1,3 +1,33 @@
+/*
+**The MIT License (MIT)
+**
+**Copyright (c) 2014 Andreas Tscheinig
+**
+**Permission is hereby granted, free of charge, to any person obtaining a copy
+**of this software and associated documentation files (the "Software"), to deal
+**in the Software without restriction, including without limitation the rights
+**to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+**copies of the Software, and to permit persons to whom the Software is
+**furnished to do so, subject to the following conditions:
+**
+**The above copyright notice and this permission notice shall be included in all
+**copies or substantial portions of the Software.
+**
+**THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+**IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+**FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+**AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+**LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+**OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+**SOFTWARE.
+*/
+/*
+** TODO:
+** - refactor event handling (support use of using multiple callbacks on one event)
+** - refactor constructor
+** - [optional] add type to column for advanced sorting
+** - showColumns Bug: not table displayed when not columns should be displayed -> empty lines expected
+*/
 Paginator = (function () {
     var paginator = function (root, entries, header, options) {
         if (!root) return;
@@ -13,6 +43,7 @@ Paginator = (function () {
         options.hideSwitchBar = options.hideSwitchBar === false ? false : true;
         options.hideHeader = options.hideHeader === true ? true : false;
         options.maxRows = options.maxRows && options.maxRows > 0 ? options.maxRows : 7;
+        if (!options.types) options.types = [];
 
         this.activeColumn = options.defaultColumn;
 
@@ -59,6 +90,16 @@ Paginator = (function () {
             this.options.sortableColumns = [];
             for (i = 0; i < this.header.length; i++) {
                 this.options.sortableColumns.push(i);
+            }
+        }
+    };
+
+    paginator.prototype.initTypes = function() {
+        var i;
+        if (this.options.types === -1) {
+            this.options.types = [];
+            for (i = 0; i < this.header.length; i++) {
+                this.options.types = "string";
             }
         }
     };
@@ -351,25 +392,39 @@ Paginator = (function () {
         this.fire("columns-changed", { visibleColumns: this.options.visibleColumns, table: table });
     };
 
-    paginator.prototype.hideHeader = function (flag) {
-        if (typeof flag !== "boolean") return;
-        this.options.hideHeader = flag;
-        if (flag) { // hide header
-            document.getElementById("paginatorTableHeader-" + this.id).style.display = "none";
-        }
-        else {
-            document.getElementById("paginatorTableHeader-" + this.id).style.display = "table-row";
-        }
+    paginator.prototype.showHeader = function() {
+        document.getElementById("paginatorTableHeader-" + this.id).style.display = "table-row";
+    }
+
+    paginator.prototype.hideHeader = function () {
+        document.getElementById("paginatorTableHeader-" + this.id).style.display = "none";
     };
 
 
-    paginator.prototype.sort = function(type) {
+    paginator.prototype.sort = function(sort) {
         this.entries.sort(function (a, b) {
-            if (type === "dsc") {
-                return a[this.activeColumn].replace(/(<([^>]+)>)/ig, "").localeCompare(b[this.activeColumn].replace(/(<([^>]+)>)/ig, ""));
+            var type = this.options.types[this.activeColumn];
+            if (sort === "dsc") {
+                if (type === "string") {
+                    return a[this.activeColumn].replace(/(<([^>]+)>)/ig, "").localeCompare(b[this.activeColumn].replace(/(<([^>]+)>)/ig, ""));
+                } else if (type === "number") {
+                    return a[this.activeColumn] - b[this.activeColumn];
+                } else if (type === "boolean") {
+                    return a[this.activeColumn] - b[this.activeColumn];
+                } else if (type === "date") {
+                    return new Date(a[this.activeColumn]) - new Date(b[this.activeColumn]);                
+                }
             }
             else {
-                return b[this.activeColumn].replace(/(<([^>]+)>)/ig, "").localeCompare(a[this.activeColumn].replace(/(<([^>]+)>)/ig, ""));
+                if (type === "string") {
+                    return b[this.activeColumn].replace(/(<([^>]+)>)/ig, "").localeCompare(a[this.activeColumn].replace(/(<([^>]+)>)/ig, ""));
+                } else if (type === "number") {
+                    return b[this.activeColumn] - a[this.activeColumn];
+                } else if (type === "boolean") {
+                    return b[this.activeColumn] - a[this.activeColumn];
+                } else if (type === "date") {
+                    return new Date(b[this.activeColumn]) - new Date(a[this.activeColumn]);  
+                }
             }
             
         } .bind(this));
