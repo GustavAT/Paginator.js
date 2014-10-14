@@ -19,7 +19,7 @@ Simple implementation of a paginator. The paginator includes the following featu
 + Create a new empty div-block with an id:
 
 ```html
-<div id="paginator" style="width: 200px"></div>
+<div id="paginator" style="width: 400px"></div>
 ```
 
 + Define Columns:
