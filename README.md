@@ -16,22 +16,29 @@ Simple implementation of a paginator. The paginator includes the following featu
 
 ###Usage
 
-1. Create a new empty div-block with an id:
++ Create a new empty div-block with an id:
+
 ```html
 <div id="paginator" style="width: 200px"></div>
 ```
-2. Define Columns:
+
++ Define Columns:
+
 ```javascript
 var header = ["#", "Product", "Price"];
 ```
-3. Specify your content:
+
++ Specify your content:
+
 ```javascript
 var entries = [];
 entries.push([1, "Fish", 2.49]);
 entries.push([2, "Apple", 0.99]);
 // add some more products
 ```
-4. Define some options:
+
++ Define some options:
+
 ```javascript
 var options = {};
 options.types = ["number", "string", "number"];
@@ -39,7 +46,9 @@ options.maxRows = 4;
 options.defaultColumn = 1;
 // have a look at documentation for all options
 ```
-5. Create a new Paginator instance and look at the result:
+
++ Create a new Paginator instance and pass the parameters:
+
 ```javascript
 var paginator = new Paginator("paginator", entries, header, options);
 ```
