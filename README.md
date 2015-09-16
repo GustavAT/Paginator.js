@@ -14,6 +14,8 @@ Simple implementation of a paginator. The paginator includes the following featu
 
 [>> JSFiddle Life Demo](http://jsfiddle.net/jy3ffyag/)
 
+**JSFiddle Demos currently only working on firefox**
+
 ###Usage
 
 + Create a new empty div-block with an id:
