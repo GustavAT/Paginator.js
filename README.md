@@ -16,7 +16,7 @@ Client-side paginator that includes the following features:
 
 **JSFiddle Demos currently only working on firefox**
 
-###Usage
+### Usage
 
 + Create a new empty div-block with an id:
 
